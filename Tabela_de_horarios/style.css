@@ -1,0 +1,116 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    margin: 0px;
+    padding: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    background-color: lightblue;
+    color: grey;
+
+    user-select: none;
+}
+
+button, input {
+    user-select: initial;
+}
+
+button {
+    width: 100%;
+}
+
+#grid-principal {
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    grid-template-rows: repeat(2, 280px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+    border-radius: 20px;
+}
+
+#grid-principal>* {
+    border: 3px dashed grey;
+    /* border-style: dashed;
+    border-width: 3px; */
+    outline: 6px solid white;
+
+    background-color: white;
+}
+
+#semestre {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+#agenda {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+#semestre>form {
+    padding: 10px;
+
+    border-bottom: 3px dashed grey;
+
+    display: grid;
+    grid-template-columns: repeat(4, 22%);
+    grid-template-rows: repeat(2, 40%);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+
+#semestre>form>*{
+    width: 100%;
+    padding: 5px;
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#semestre>form>#nome {
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+#semestre>form>#abreviacao {
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+#semestre>form>#periodo {
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+#semestre>form>button {
+    grid-area: 2 / 3 / 3 / 5;
+}
+
+#semestre>header,
+#agenda>header {
+    padding: 10px;
+    text-align: center;
+
+    border-bottom: 3px dashed grey;
+}
+
+#semestre>table,
+#agenda>table {
+    padding: 10px;
+    font-size: 12px;
+
+    width: 100%;
+    table-layout: fixed;
+}
+
+#horario-completo {
+    grid-area: 1 / 2 / 3 / 4;
+    padding: 10px;
+}
+
+#horario-completo>table{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}

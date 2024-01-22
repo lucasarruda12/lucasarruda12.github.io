@@ -9,7 +9,7 @@ body {
     align-items: center;
     height: 100vh;
 
-    background-color: lightblue;
+    background-image: linear-gradient(lightblue, rgb(203, 235, 255));
     color: grey;
 
     user-select: none;
@@ -27,16 +27,12 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 280px);
     grid-template-rows: repeat(2, 280px);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-
-    border-radius: 20px;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
 }
 
 #grid-principal>* {
     border: 3px dashed grey;
-    /* border-style: dashed;
-    border-width: 3px; */
     outline: 6px solid white;
 
     background-color: white;

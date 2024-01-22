@@ -106,7 +106,26 @@ button {
 }
 
 #horario-completo>table{
-    width: 100%;
-    height: 100%;
-    background-color: red;
+    width: 564px;
+    table-layout: fixed;
+
+    text-align: center;
+}
+
+#horario-completo>table>tbody>tr>*{
+    width: 90px;
+    height: 29px;
+}
+
+tr.m{
+    background-color: lightblue;
+}
+
+tr.t{
+    background-color: lightcoral;
+    color: white;
+}
+
+tr.n{
+    background-color: lightgreen;
 }

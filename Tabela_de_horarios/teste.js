@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded',() => {
+    montar_tabela();
+
     const semestre_form = document.getElementById('semestre_form');
     const nome = document.getElementById('nome').value;
     const abreviacao =  document.getElementById('abreviacao').value;
@@ -28,4 +30,14 @@ function criar_elemento_turma(nome, abreviacao, periodo){
     })
 
     return linha
+}
+
+function montar_tabela(){
+    const tabela = document.getElementById('horario_completo_table');
+
+    for (let tr of tabela.children[0].children){
+        for (let td of tr.children){
+            td.innerHTML = td.classList;
+        }
+    }
 }

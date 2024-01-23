@@ -36,3 +36,9 @@ test('Todos os componentes são necessários', () => {
     expect(() => new Periodo(M)).toThrow(Error);
     expect(() => new Periodo(12)).toThrow(Error);
 })
+
+test('Getters', () => {
+    expect(new Periodo('23M12').getDias()).toEqual(['2', '3']);
+    expect(new Periodo('23M12').getTurno()).toEqual('M');
+    expect(new Periodo('23M12').getHorarios()).toEqual(['1', '2']);
+})

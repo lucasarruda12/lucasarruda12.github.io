@@ -1,3 +1,5 @@
+const arrays_sao_iguais = require('./util/igualdade_de_arrays.js');
+
 module.exports = class Periodo {
     #dias;
     #turno;
@@ -41,6 +43,16 @@ module.exports = class Periodo {
     }
 
     e_igual_a(outroPeriodo){
-        
+        if (this == outroPeriodo) return true;
+
+        if (
+            arrays_sao_iguais(this.#dias, outroPeriodo.getDias()) &&
+            this.#turno === outroPeriodo.getTurno() &&
+            arrays_sao_iguais(this.#horarios, outroPeriodo.getHorarios())
+        ) {
+            return true;
+        }
+
+        return false;
     }
 }

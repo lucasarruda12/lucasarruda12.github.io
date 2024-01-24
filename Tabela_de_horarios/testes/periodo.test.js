@@ -42,3 +42,28 @@ test('Getters', () => {
     expect(new Periodo('23M12').getTurno()).toEqual('M');
     expect(new Periodo('23M12').getHorarios()).toEqual(['1', '2']);
 })
+
+test('Todo período é igual a ele mesmo', () => {
+    const meuPeriodo = new Periodo('23M12');
+    expect(meuPeriodo.e_igual_a(meuPeriodo)).toBeTruthy();
+})
+
+test('Periodos iguais dividem dias, turno e horarios', () => {
+    const meuPeriodo = new Periodo('23M12');
+    const meuOutroPeriodo = new Periodo('23M12');
+
+    expect(meuPeriodo.e_igual_a(meuOutroPeriodo)).toBeTruthy();
+})
+
+test('Periodos diferentes não são iguais', () => {
+    const meuPeriodo = new Periodo('23M12');
+    const meuPeriodoTarde = new Periodo('23T12');
+    const meuPeriodoNaTerca = new Periodo('3T12');
+    const meuPeriodoNoFimDoHorario= new Periodo('23M56');
+    const meuOutroPeriodo = new Periodo('357T12');
+
+    expect(meuPeriodo.e_igual_a(meuOutroPeriodo)).toBeFalsy();
+    expect(meuPeriodo.e_igual_a(meuPeriodoNaTerca)).toBeFalsy();
+    expect(meuPeriodo.e_igual_a(meuPeriodoNoFimDoHorario)).toBeFalsy();
+    expect(meuPeriodo.e_igual_a(meuPeriodoTarde)).toBeFalsy();
+})

@@ -36,6 +36,8 @@ module.exports = class Turma {
     }
 
     conflita_com(outraTurma){
-        if (this.#periodo.conflita_com(outraTurma.getPeriodo())) return true;
+        if (this.#periodo.conflita_com(outraTurma.getPeriodo())) {
+            return true;
+        }
     }
 }

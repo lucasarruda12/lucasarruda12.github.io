@@ -22,4 +22,16 @@ module.exports = class Turma {
     getAbreviacao(){
         return this.#abreviacao;
     }
+
+    e_igual_a(outraTurma){
+        if(
+            this.#nome == outraTurma.getNome() &&
+            this.#abreviacao == outraTurma.getAbreviacao() &&
+            this.#periodo.e_igual_a(outraTurma.getPeriodo())
+        ) {
+            return true;
+        }
+
+        return false;
+    }
 }

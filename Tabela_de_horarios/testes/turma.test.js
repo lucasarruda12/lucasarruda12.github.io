@@ -13,3 +13,19 @@ test('getters', () => {
     expect(minhaTurma.getPeriodo()).toEqual(periodo);
     expect(minhaTurma.getAbreviacao()).toEqual('TT');
 })
+
+test('Toda turma é igual a ela mesma', () => {
+    expect(minhaTurma.e_igual_a(minhaTurma)).toBeTruthy();
+})
+
+test('Turmas iguais tem todos os mesmos atributos', () => {
+    const minhaSegundaTurma = new Turma ('Minha Segunda Turma', periodo, abreviacao);
+    const minhaTerceiraTurma = new Turma (nome, periodo, 'MTT');
+
+    const meuOutroPeriodo = new Periodo('23M12');
+    const minhaQuartaTurma = new Turma(nome, meuOutroPeriodo, abreviacao);
+    
+    expect(minhaTurma.e_igual_a(minhaSegundaTurma)).toBeFalsy();
+    expect(minhaTurma.e_igual_a(minhaTerceiraTurma)).toBeFalsy();
+    expect(minhaTurma.e_igual_a(minhaQuartaTurma)).toBeTruthy();
+})

@@ -39,4 +39,8 @@ module.exports = class Periodo {
     getHorarios(){
         return this.#horarios;
     }
+
+    e_igual_a(outroPeriodo){
+        
+    }
 }

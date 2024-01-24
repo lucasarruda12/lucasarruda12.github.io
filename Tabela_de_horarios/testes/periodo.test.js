@@ -1,5 +1,12 @@
 const Periodo = require('../src/periodo');
 
+
+test('Getters', () => {
+    expect(new Periodo('23M12').getDias()).toEqual(['2', '3']);
+    expect(new Periodo('23M12').getTurno()).toEqual('M');
+    expect(new Periodo('23M12').getHorarios()).toEqual(['1', '2']);
+})
+
 test('Periodo não pode ser vazio', () => {
     const vazio = "";
     expect(() => new Periodo(vazio)).toThrow(Error);
@@ -37,12 +44,6 @@ test('Todos os componentes são necessários', () => {
     expect(() => new Periodo(12)).toThrow(Error);
 })
 
-test('Getters', () => {
-    expect(new Periodo('23M12').getDias()).toEqual(['2', '3']);
-    expect(new Periodo('23M12').getTurno()).toEqual('M');
-    expect(new Periodo('23M12').getHorarios()).toEqual(['1', '2']);
-})
-
 test('Todo período é igual a ele mesmo', () => {
     const meuPeriodo = new Periodo('23M12');
     expect(meuPeriodo.e_igual_a(meuPeriodo)).toBeTruthy();
@@ -66,4 +67,40 @@ test('Periodos diferentes não são iguais', () => {
     expect(meuPeriodo.e_igual_a(meuPeriodoNaTerca)).toBeFalsy();
     expect(meuPeriodo.e_igual_a(meuPeriodoNoFimDoHorario)).toBeFalsy();
     expect(meuPeriodo.e_igual_a(meuPeriodoTarde)).toBeFalsy();
+})
+
+test('Periodos iguais conflitam', () => {
+    const meuPeriodo = new Periodo('23M12');
+    const meuOutroPeriodo = new Periodo('23M12');
+
+    expect(meuPeriodo.conflita_com(meuPeriodo)).toBeTruthy();
+    expect(meuPeriodo.conflita_com(meuOutroPeriodo)).toBeTruthy();
+})
+
+test('Periodos não podem dividir o mesmo horário no mesmo dia', () => {
+    const meuPeriodo = new Periodo('23M12');
+    const meuOutroPeriodo = new Periodo('35M12');
+
+    expect(meuPeriodo.conflita_com(meuOutroPeriodo)).toBeTruthy();
+})
+
+test('Períodos podem dividir horário e dia em turnos diferentes', () => {
+    const meuPeriodo = new Periodo('23M12');
+    const meuOutroPeriodo = new Periodo('23T12');
+
+    expect(meuPeriodo.conflita_com(meuOutroPeriodo)).toBeFalsy();
+})
+
+test('Periodos podem dividir horario em dias diferentes', () => {
+    const meuPeriodo = new Periodo('23M12');
+    const meuOutroPeriodo = new Periodo('45M12');
+
+    expect(meuPeriodo.conflita_com(meuOutroPeriodo)).toBeFalsy();
+})
+
+test('Périodos podem dividir o mesmo dia, desde que em horários diferentes', () => {
+    const meuPeriodo = new Periodo('23M12');
+    const meuOutroPeriodo = new Periodo('23M34');
+
+    expect(meuPeriodo.conflita_com(meuOutroPeriodo)).toBeFalsy();
 })

@@ -55,4 +55,36 @@ module.exports = class Periodo {
 
         return false;
     }
+
+    conflita_com(outroPeriodo){
+        if (this.e_igual_a(outroPeriodo)) return true;
+
+        if (
+            this.#conflitaNosDias(outroPeriodo) &&
+            this.#conflitaNosHorarios(outroPeriodo) &&
+            this.#turno == outroPeriodo.getTurno()
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    #conflitaNosDias(outroPeriodo){
+        let conflitoNosDias = false;
+        for (let dia of this.#dias) {
+            if (outroPeriodo.getDias().includes(dia)) conflitoNosDias = true;
+        }
+
+        return conflitoNosDias;
+    }
+
+    #conflitaNosHorarios(outroPeriodo){
+        let conflitoNosHorarios = false;
+        for (let horario of this.#horarios) {
+            if (outroPeriodo.getHorarios().includes(horario)) conflitoNosHorarios = true;
+        }
+
+        return conflitoNosHorarios;
+    }
 }

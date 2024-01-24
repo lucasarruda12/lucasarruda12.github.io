@@ -1,4 +1,4 @@
-module.exports = class Semestre {
+module.exports = class Agenda {
     #turmas = [];
 
     getTurmas(){
@@ -6,7 +6,8 @@ module.exports = class Semestre {
     }
 
     adicionar_turma(novaTurma){
-        if(this.#ha_repeticao(novaTurma)) throw new Error('Turma já existe no semestre');
+        if (this.#ha_repeticao(novaTurma)) throw new Error('Turma já existe no semestre');
+        if (this.#ha_conflito(novaTurma)) throw new Error('Há conflito de horário');
 
         this.#turmas.push(novaTurma);
     }
@@ -24,6 +25,14 @@ module.exports = class Semestre {
     #ha_repeticao(novaTurma){
         for (let turma of this.#turmas){
             if (novaTurma.e_igual_a(turma)) return true;
+        }
+
+        return false;
+    }
+
+    #ha_conflito(novaTurma){
+        for (let turma of this.#turmas) {
+            if (novaTurma.conflita_com(turma)) return true;
         }
 
         return false;

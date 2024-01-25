@@ -10,4 +10,5 @@ document.addEventListener('DOMContentLoaded', () => {
     semestre.adicionar_turma(turma);
 
     mapeadorDoSemestre.renderizar(semestre);
+    console.log(mapeadorDoSemestre.reconstruirSemestre());
 })

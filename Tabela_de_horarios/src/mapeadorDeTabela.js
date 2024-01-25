@@ -26,8 +26,24 @@ class MapeadorDeTabela {
             tr.appendChild(abreviacao);
             tr.appendChild(periodo);
 
-            this.#DOMelement.appendChild(tr);
+            this.#DOMelement.children[0].appendChild(tr);
         }
+    }
+
+    reconstruirSemestre(){
+        const semestre = new Semestre();
+
+        for (let i = 1; i < this.#DOMelement.children[0].children.length; i++){
+            const row = this.#DOMelement.children[0].children[i];
+            const nome = row.children[0].innerHTML;
+            const abreviacao = row.children[1].innerHTML;
+            const periodo = new Periodo(row.children[2].innerHTML);
+
+            const turma = new Turma(nome, periodo, abreviacao);
+            semestre.adicionar_turma(turma);
+        }
+
+        return semestre;
     }
 }
 

@@ -4,11 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const materias_do_semestre = document.getElementById('semestre_table');
     const mapeadorDoSemestre = new MapeadorDeTabela(materias_do_semestre);
 
-    const periodo = new Periodo('23M12');
-    const turma = new Turma('TURMA', periodo.getPeriodoFormatado(), 'TT');
-    const semestre = new Semestre();
-    semestre.adicionar_turma(turma);
+    const formulario = document.getElementById('semestre_form')
+    const gestorDeFormulario = new GestorDeFormulario(formulario);
 
-    mapeadorDoSemestre.renderizar(semestre);
-    console.log(mapeadorDoSemestre.reconstruirSemestre());
+    const semestre = new Semestre();
+
+    gestorDeFormulario.montarTurma();
+
+    formulario.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const turma = gestorDeFormulario.montarTurma();
+        semestre.adicionar_turma(turma);
+        mapeadorDoSemestre.renderizar(semestre);
+    });
 })

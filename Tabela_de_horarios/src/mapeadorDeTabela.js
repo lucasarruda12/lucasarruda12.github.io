@@ -10,6 +10,8 @@ class MapeadorDeTabela {
     }
 
     renderizar(listaDeTurmas){
+        this.#resetarElemento();
+
         for (let turma of listaDeTurmas.getTurmas()){
             const tr = document.createElement('tr');
 
@@ -17,7 +19,7 @@ class MapeadorDeTabela {
             nome.innerHTML = turma.getNome();
 
             const periodo = document.createElement('td');
-            periodo.innerHTML = turma.getPeriodo();
+            periodo.innerHTML = turma.getPeriodo().getPeriodoFormatado();
 
             const abreviacao = document.createElement('td');
             abreviacao.innerHTML = turma.getAbreviacao();
@@ -26,15 +28,15 @@ class MapeadorDeTabela {
             tr.appendChild(abreviacao);
             tr.appendChild(periodo);
 
-            this.#DOMelement.children[0].appendChild(tr);
+            this.#DOMelement.children[1].appendChild(tr);
         }
     }
 
     reconstruirSemestre(){
         const semestre = new Semestre();
 
-        for (let i = 1; i < this.#DOMelement.children[0].children.length; i++){
-            const row = this.#DOMelement.children[0].children[i];
+        for (let i = 1; i < this.#DOMelement.children[1].children.length; i++){
+            const row = this.#DOMelement.children[1].children[i];
             const nome = row.children[0].innerHTML;
             const abreviacao = row.children[1].innerHTML;
             const periodo = new Periodo(row.children[2].innerHTML);
@@ -44,6 +46,29 @@ class MapeadorDeTabela {
         }
 
         return semestre;
+    }
+
+    reconstruirAgenda(){
+        const agenda = new Agenda();
+
+        for (let i = 1; i < this.#DOMelement.children[1].children.length; i++){
+            const row = this.#DOMelement.children[1].children[i];
+            const nome = row.children[0].innerHTML;
+            const abreviacao = row.children[1].innerHTML;
+            const periodo = new Periodo(row.children[2].innerHTML);
+
+            const turma = new Turma(nome, periodo, abreviacao);
+            agenda.adicionar_turma(turma);
+        }
+
+        return agenda;
+    }
+
+    #resetarElemento(){
+        this.#DOMelement.children[1].remove()
+
+        const novoBody = document.createElement('tbody');
+        this.#DOMelement.appendChild(novoBody);
     }
 }
 

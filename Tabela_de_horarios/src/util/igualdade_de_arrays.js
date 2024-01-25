@@ -1,4 +1,4 @@
-module.exports = function arrays_sao_iguais(array, outroArray) {
+function arrays_sao_iguais(array, outroArray) {
     if(array === outroArray) return true;
     if (array.length !== outroArray.length) return false;
 
@@ -8,3 +8,5 @@ module.exports = function arrays_sao_iguais(array, outroArray) {
 
     return true;
 }
+
+// module.exports = arrays_sao_iguais;

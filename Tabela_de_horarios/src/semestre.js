@@ -1,4 +1,4 @@
-module.exports = class Semestre {
+class Semestre {
     #turmas = [];
 
     getTurmas(){
@@ -29,3 +29,5 @@ module.exports = class Semestre {
         return false;
     }
 }
+
+// module.exports = Semestre;

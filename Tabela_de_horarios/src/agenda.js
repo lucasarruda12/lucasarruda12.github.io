@@ -1,4 +1,4 @@
-module.exports = class Agenda {
+class Agenda {
     #turmas = [];
 
     getTurmas(){
@@ -38,3 +38,5 @@ module.exports = class Agenda {
         return false;
     }
 }
+
+// module.exports = Agenda;

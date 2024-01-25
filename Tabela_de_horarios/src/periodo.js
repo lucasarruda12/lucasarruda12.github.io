@@ -1,6 +1,6 @@
-const arrays_sao_iguais = require('./util/igualdade_de_arrays.js');
+// const arrays_sao_iguais = require('./util/igualdade_de_arrays.js');
 
-module.exports = class Periodo {
+class Periodo {
     #dias;
     #turno;
     #horarios;
@@ -40,6 +40,10 @@ module.exports = class Periodo {
 
     getHorarios(){
         return this.#horarios;
+    }
+
+    getPeriodoFormatado(){
+        return (this.#dias.join('') + this.#turno + this.#horarios.join(''));
     }
 
     e_igual_a(outroPeriodo){
@@ -88,3 +92,5 @@ module.exports = class Periodo {
         return conflitoNosHorarios;
     }
 }
+
+// module.exports = Periodo;

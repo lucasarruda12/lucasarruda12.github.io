@@ -1,6 +1,6 @@
-const Periodo = require('../src/periodo');
+// const Periodo = require('../src/periodo');
 
-module.exports = class Turma {
+class Turma {
     #nome;
     #periodo;
     #abreviacao;
@@ -41,3 +41,5 @@ module.exports = class Turma {
         }
     }
 }
+
+// module.exports = Turma;

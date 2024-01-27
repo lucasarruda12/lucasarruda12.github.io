@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const semestre = new Semestre();
 
-    gestorDeFormulario.montarTurma();
-
     formulario.addEventListener('submit', (e) => {
         e.preventDefault();
 

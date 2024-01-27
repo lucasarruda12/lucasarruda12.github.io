@@ -1,6 +1,21 @@
 // const MapeadorDeTabela = require('./src/mapeadorDeTabela.js');
 
 document.addEventListener('DOMContentLoaded', () => {
+    const body = document.getElementsByTagName('body')[0];
+
+    body.addEventListener('mousedown', (event) => {
+        if (event.button != 2) return;
+
+        const menu = new MenuDeContexto();
+        const node = menu.criar(event);
+
+        body.addEventListener('mousedown', (event) => {
+            if(!node.contains(event.target) || event.button == 2) {
+                node.remove();
+            }
+        })
+    });
+
     const materias_do_semestre = document.getElementById('semestre_table');
     const mapeadorDoSemestre = new MapeadorDeTabela(materias_do_semestre);
 

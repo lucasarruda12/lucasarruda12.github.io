@@ -19,10 +19,6 @@ button, input {
     user-select: initial;
 }
 
-button {
-    width: 100%;
-}
-
 #grid-principal {
     display: grid;
     grid-template-columns: repeat(3, 280px);
@@ -61,9 +57,12 @@ button {
     width: 100%;
     padding: 5px;
     display: inline-block;
-    border: 1px solid grey;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+#semestre>form>input{
+    border: 1px solid grey;
 }
 
 #semestre>form>#nome {
@@ -127,4 +126,43 @@ tr.t{
 
 tr.n{
     background-color: lightgreen;
+}
+
+#menuDeContexto {
+    width: 80px;
+    border: 1px solid grey;
+
+    border-radius: 4px;
+    background-color: white;
+
+    color: black;
+    font-size: 12px;
+}
+
+#menuDeContexto > * {
+    padding: 10px;    
+}
+
+#menuDeContexto :first-child{
+    border-bottom: 1px solid grey;
+}
+
+#menuDeContexto > *:hover {
+    background-color: grey;
+    color: white;
+}
+
+button {
+    width: 100%;
+    border: 1px solid grey;
+
+    border-radius: 4px;
+    background-color: white;
+}
+
+button:hover {
+    background-color: grey;
+    color: white;
+
+    cursor: pointer;
 }

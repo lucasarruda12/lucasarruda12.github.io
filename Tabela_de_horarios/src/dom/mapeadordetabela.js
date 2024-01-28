@@ -37,7 +37,7 @@ class MapeadorDeTabela {
 
                 body.addEventListener('mousedown', (event) => {
                     if (!node.contains(event.target)) {
-                        node.remove();
+                        menu.remover(node);
                     }
                 });
             });
@@ -45,8 +45,6 @@ class MapeadorDeTabela {
             this.#DOMelement.children[1].appendChild(tr);
         }
     }
-
-
 
     reconstruirSemestre(){
         const semestre = new Semestre();

@@ -6,6 +6,9 @@ class MenuDeContexto {
     }
 
     criar(event){
+        this.#alvo.style.backgroundColor = 'grey';
+        this.#alvo.style.color = 'white';
+
         const menu = document.createElement('div');
         menu.id = 'menuDeContexto';
         menu.style.position = 'absolute';
@@ -17,7 +20,7 @@ class MenuDeContexto {
         editar.id = 'editar';
         editar.addEventListener('click', () => {
             this.#editarTurmaDoSemestre(this.#alvo);
-            menu.remove();
+            this.remover(menu);
         })
 
         const remover = document.createElement('div');
@@ -25,7 +28,7 @@ class MenuDeContexto {
         remover.id = 'remover;';
         remover.addEventListener('click', () => {
             this.#removerTurmaDoSemestre(this.#alvo);
-            menu.remove();
+            this.remover(menu);
         })
 
         for (let elemento of [editar, remover]){
@@ -60,5 +63,12 @@ class MenuDeContexto {
 
         new GestorDeFormulario(formulario).mudarValores(nome, abreviacao, periodo);
         this.#removerTurmaDoSemestre(alvo);
+    }
+
+    remover(menu){
+        menu.remove();
+
+        this.#alvo.style.backgroundColor = 'white';
+        this.#alvo.style.color = 'grey';
     }
 }

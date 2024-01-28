@@ -24,22 +24,37 @@ class MapeadorDeTabela {
             const abreviacao = document.createElement('td');
             abreviacao.innerHTML = turma.getAbreviacao();
 
-            tr.appendChild(nome);
-            tr.appendChild(abreviacao);
-            tr.appendChild(periodo);
+            for (let elemento of [nome, periodo, abreviacao]){
+                tr.appendChild(elemento);
+            }
+            
+            tr.addEventListener('contextmenu', (event) => {
+                event.preventDefault();
+
+                const menu = new MenuDeContexto(tr);
+                const node = menu.criar(event);
+                const body = document.getElementsByTagName('body')[0];
+
+                body.addEventListener('mousedown', (event) => {
+                    if (!node.contains(event.target)) {
+                        node.remove();
+                    }
+                });
+            });
 
             this.#DOMelement.children[1].appendChild(tr);
         }
     }
 
+
+
     reconstruirSemestre(){
         const semestre = new Semestre();
 
-        for (let i = 1; i < this.#DOMelement.children[1].children.length; i++){
-            const row = this.#DOMelement.children[1].children[i];
+        for (let row of this.#DOMelement.children[1].children) {
             const nome = row.children[0].innerHTML;
-            const abreviacao = row.children[1].innerHTML;
-            const periodo = new Periodo(row.children[2].innerHTML);
+            const abreviacao = row.children[2].innerHTML;
+            const periodo = new Periodo(row.children[1].innerHTML);
 
             const turma = new Turma(nome, periodo, abreviacao);
             semestre.adicionar_turma(turma);
@@ -48,21 +63,21 @@ class MapeadorDeTabela {
         return semestre;
     }
 
-    reconstruirAgenda(){
-        const agenda = new Agenda();
+    // reconstruirAgenda(){
+    //     const agenda = new Agenda();
 
-        for (let i = 1; i < this.#DOMelement.children[1].children.length; i++){
-            const row = this.#DOMelement.children[1].children[i];
-            const nome = row.children[0].innerHTML;
-            const abreviacao = row.children[1].innerHTML;
-            const periodo = new Periodo(row.children[2].innerHTML);
+    //     for (let i = 1; i < this.#DOMelement.children[1].children.length; i++){
+    //         const row = this.#DOMelement.children[1].children[i];
+    //         const nome = row.children[0].innerHTML;
+    //         const abreviacao = row.children[1].innerHTML;
+    //         const periodo = new Periodo(row.children[2].innerHTML);
 
-            const turma = new Turma(nome, periodo, abreviacao);
-            agenda.adicionar_turma(turma);
-        }
+    //         const turma = new Turma(nome, periodo, abreviacao);
+    //         agenda.adicionar_turma(turma);
+    //     }
 
-        return agenda;
-    }
+    //     return agenda;
+    // }
 
     #resetarElemento(){
         this.#DOMelement.children[1].remove()

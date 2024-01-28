@@ -14,4 +14,10 @@ class GestorDeFormulario {
         
         return turma;
     }
+
+    mudarValores(nome, abreviacao, periodo){
+        this.#DOMelement.children[0].value = nome;
+        this.#DOMelement.children[1].value = abreviacao;
+        this.#DOMelement.children[2].value = periodo;
+    }
 }

@@ -6,7 +6,7 @@ class Periodo {
     #horarios;
 
     constructor(periodo){
-        if(!this.#e_valido(periodo)) throw new Error('Formatação de periodo Inválida');
+        if(!this.#e_valido(periodo)) throw new Error('Período Inválido');
 
         const periodo_separado = this.#separar(periodo);
         this.#dias = periodo_separado.dias;

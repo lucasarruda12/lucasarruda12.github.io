@@ -61,22 +61,6 @@ class MapeadorDeTabela {
         return semestre;
     }
 
-    // reconstruirAgenda(){
-    //     const agenda = new Agenda();
-
-    //     for (let i = 1; i < this.#DOMelement.children[1].children.length; i++){
-    //         const row = this.#DOMelement.children[1].children[i];
-    //         const nome = row.children[0].innerHTML;
-    //         const abreviacao = row.children[1].innerHTML;
-    //         const periodo = new Periodo(row.children[2].innerHTML);
-
-    //         const turma = new Turma(nome, periodo, abreviacao);
-    //         agenda.adicionar_turma(turma);
-    //     }
-
-    //     return agenda;
-    // }
-
     #resetarElemento(){
         this.#DOMelement.children[1].remove()
 

@@ -23,7 +23,9 @@
         <div id="semestre">
             <header> <b> MATERIAS DO SEMESTRE </b> </header>
             <form id="semestre_form">
-                <input type="text" id="nome" placeholder="Nome da Turma" required="true">
+                <input type="text" id="nome" placeholder="Nome da Turma" required="true" list="disciplinas" />
+                <datalist id="disciplinas">
+                </datalist>
                 <input type="text" id="abreviacao" placeholder="ABVR">
                 <input type="text" id="periodo" placeholder="Período" required="true">
                 <button type="submit" id='adicionar'>ADICIONAR</button>

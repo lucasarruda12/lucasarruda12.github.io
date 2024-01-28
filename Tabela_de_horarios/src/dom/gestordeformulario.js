@@ -11,6 +11,8 @@ class GestorDeFormulario {
         const periodo = new Periodo(this.#DOMelement.children[2].value);
 
         const turma = new Turma(nome, periodo, abreviacao);
+
+        this.mudarValores('', '', '');
         
         return turma;
     }

@@ -24,7 +24,7 @@ class MapeadorDeTabela {
             const abreviacao = document.createElement('td');
             abreviacao.innerHTML = turma.getAbreviacao();
 
-            for (let elemento of [nome, periodo, abreviacao]){
+            for (let elemento of [nome, abreviacao, periodo]){
                 tr.appendChild(elemento);
             }
             
@@ -51,8 +51,8 @@ class MapeadorDeTabela {
 
         for (let row of this.#DOMelement.children[1].children) {
             const nome = row.children[0].innerHTML;
-            const abreviacao = row.children[2].innerHTML;
-            const periodo = new Periodo(row.children[1].innerHTML);
+            const abreviacao = row.children[1].innerHTML;
+            const periodo = new Periodo(row.children[2].innerHTML);
 
             const turma = new Turma(nome, periodo, abreviacao);
             semestre.adicionar_turma(turma);

@@ -46,8 +46,8 @@ class MenuDeContexto {
 
         const turma = new Turma(
             alvo.children[0].innerHTML,
-            new Periodo(alvo.children[1].innerHTML),
-            alvo.children[2].innerHTML
+            new Periodo(alvo.children[2].innerHTML),
+            alvo.children[1].innerHTML
         );
 
         semestre.remover_turma(turma);
@@ -58,8 +58,8 @@ class MenuDeContexto {
     #editarTurmaDoSemestre(alvo){
         const formulario = document.getElementById('semestre_form');
         const nome = alvo.children[0].innerHTML;
-        const periodo = alvo.children[1].innerHTML;
-        const abreviacao = alvo.children[2].innerHTML;
+        const periodo = alvo.children[2].innerHTML;
+        const abreviacao = alvo.children[1].innerHTML;
 
         new GestorDeFormulario(formulario).mudarValores(nome, abreviacao, periodo);
         this.#removerTurmaDoSemestre(alvo);

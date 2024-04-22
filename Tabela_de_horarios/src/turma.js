@@ -1,45 +1,41 @@
-// const Periodo = require('../src/periodo');
-
 class Turma {
-    #nome;
-    #periodo;
-    #abreviacao;
+  #nome;
+  #periodo;
+  #abreviacao;
 
-    constructor(nome, periodo, abreviacao){
-        this.#nome = nome;
-        this.#periodo = periodo;
-        this.#abreviacao = abreviacao;
+  constructor(nome, periodo, abreviacao){
+    this.#nome = nome;
+    this.#periodo = periodo;
+    this.#abreviacao = abreviacao;
+  }
+
+  getNome(){
+    return this.#nome;
+  }
+
+  getPeriodo(){
+    return this.#periodo;
+  }
+
+  getAbreviacao(){
+    return this.#abreviacao;
+  }
+
+  e_igual_a(outraTurma){
+    if(
+      this.#nome == outraTurma.getNome() &&
+      this.#abreviacao == outraTurma.getAbreviacao() &&
+      this.#periodo.e_igual_a(outraTurma.getPeriodo())
+    ) {
+      return true;
     }
 
-    getNome(){
-        return this.#nome;
-    }
+    return false;
+  }
 
-    getPeriodo(){
-        return this.#periodo;
+  conflita_com(outraTurma){
+    if (this.#periodo.conflita_com(outraTurma.getPeriodo())) {
+        return true;
     }
-
-    getAbreviacao(){
-        return this.#abreviacao;
-    }
-
-    e_igual_a(outraTurma){
-        if(
-            this.#nome == outraTurma.getNome() &&
-            this.#abreviacao == outraTurma.getAbreviacao() &&
-            this.#periodo.e_igual_a(outraTurma.getPeriodo())
-        ) {
-            return true;
-        }
-
-        return false;
-    }
-
-    conflita_com(outraTurma){
-        if (this.#periodo.conflita_com(outraTurma.getPeriodo())) {
-            return true;
-        }
-    }
+  }
 }
-
-// module.exports = Turma;

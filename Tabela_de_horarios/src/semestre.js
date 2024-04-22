@@ -13,10 +13,13 @@ class Semestre {
     this.#renderizar_elementos();
   }
 
-  static remover_turma(novaTurma){
-    this.#turmas.forEach((turma, index) => {
+  static remover_turma(nova_turma){
+    this.#turmas.forEach((essa_turma, index) => {
       if (essa_turma.e_igual_a(nova_turma)){
         this.#turmas.splice(index, 1);
+
+        this.#renderizar_elementos();
+        return;
       }
     }) 
   }
@@ -30,33 +33,20 @@ class Semestre {
   }
 
   static #renderizar_elementos(){
-    this.#resetarElemento();
+    this.DOMelement.querySelector("tbody").remove()
+
+    const novoBody = document.createElement('tbody');
+    this.DOMelement.appendChild(novoBody);
 
     for (let turma of this.#turmas){
-      const tr = document.createElement('tr');
-
-      const nome = document.createElement('td');
-      nome.innerHTML = turma.getNome();
-
-      const periodo = document.createElement('td');
-      periodo.innerHTML = turma.getPeriodo().getPeriodoFormatado();
-
-      const abreviacao = document.createElement('td');
-      abreviacao.innerHTML = turma.getAbreviacao();
-
-      for (let elemento of [nome, abreviacao, periodo]){
-        tr.appendChild(elemento);
-      }
+      const tr = turma.formar_tr();
+  
+      tr.addEventListener("click", () => {
+        Agenda.adicionar_turma(turma);
+      })
 
       this.DOMelement.querySelector("tbody").appendChild(tr);
     }
-  }
-
-  static #resetarElemento(){
-      this.DOMelement.querySelector("tbody").remove()
-
-      const novoBody = document.createElement('tbody');
-      this.DOMelement.appendChild(novoBody);
   }
 }
 

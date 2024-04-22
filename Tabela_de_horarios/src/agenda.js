@@ -1,15 +1,17 @@
 class Agenda {
-  static turmas = [];
+  static #turmas = [];
+  static DOMelement;
 
   static pegar_turmas(){
     return this.#turmas;
   }
 
   static adicionar_turma(novaTurma){
-    if (this.#ha_repeticao(novaTurma)) throw new Error('Turma já existe no semestre');
+    if (this.#ha_repeticao(novaTurma)) throw new Error('Turma já existe na agenda');
     if (this.#ha_conflito(novaTurma)) throw new Error('Há conflito de horário');
 
     this.#turmas.push(novaTurma);
+    this.#renderizar_elementos();
   }
 
   static remover_turma(novaTurma){
@@ -22,7 +24,7 @@ class Agenda {
     }
   }
 
-  #ha_repeticao(novaTurma){
+  static #ha_repeticao(novaTurma){
     for (let turma of this.#turmas){
       if (novaTurma.e_igual_a(turma)) return true;
     }
@@ -30,12 +32,25 @@ class Agenda {
     return false;
   }
 
-  #ha_conflito(novaTurma){
+  static #ha_conflito(novaTurma){
     for (let turma of this.#turmas) {
       if (novaTurma.conflita_com(turma)) return true;
     }
 
     return false;
+  }
+
+  static #renderizar_elementos(){
+    this.DOMelement.querySelector("tbody").remove()
+
+    const novoBody = document.createElement('tbody');
+    this.DOMelement.appendChild(novoBody);
+
+    for (let turma of this.#turmas){
+      const tr = turma.formar_tr();
+
+      this.DOMelement.querySelector("tbody").appendChild(tr);
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   Formulario.DOMelement = document.getElementById("semestre_form");
   Semestre.DOMelement = document.getElementById("semestre_table");
+  Agenda.DOMelement = document.getElementById("agenda_table");
 
   Formulario.DOMelement.addEventListener('submit', (e) => {
       e.preventDefault();

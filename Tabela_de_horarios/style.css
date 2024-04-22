@@ -98,6 +98,13 @@ button, input {
     text-align: center;
 }
 
+#semestre>table>tbody :hover,
+#agenda>table>tbody :hover{
+  background-color: grey;
+  color: white;
+}
+
+
 #horario-completo {
     grid-area: 1 / 2 / 3 / 4;
     padding: 10px;

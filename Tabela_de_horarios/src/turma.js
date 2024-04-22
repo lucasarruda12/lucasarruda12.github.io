@@ -38,4 +38,23 @@ class Turma {
         return true;
     }
   }
+
+  formar_tr(){
+    const tr = document.createElement('tr');
+
+    const nome = document.createElement('td');
+    nome.innerHTML = this.#nome;
+
+    const periodo = document.createElement('td');
+    periodo.innerHTML = this.#periodo.getPeriodoFormatado();
+
+    const abreviacao = document.createElement('td');
+    abreviacao.innerHTML = this.#abreviacao;
+
+    for (let elemento of [nome, abreviacao, periodo]){
+      tr.appendChild(elemento);
+    }
+
+    return tr;
+  }
 }

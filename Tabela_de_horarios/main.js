@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   Formulario.DOMelement = document.getElementById("semestre_form");
+  Tabela.DOMelement = document.getElementById("horario_completo_table");
   Semestre.DOMelement = document.getElementById("semestre_table");
   Agenda.DOMelement = document.getElementById("agenda_table");
+
+  Tabela.iniciar();
 
   Formulario.DOMelement.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -10,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(nova_turma);
 
       Semestre.adicionar_turma(nova_turma);
+      Tabela.renderizar();
   });
 });
 

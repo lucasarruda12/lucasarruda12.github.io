@@ -122,16 +122,16 @@ button, input {
     height: 29px;
 }
 
-tr.m{
+tbody.M{
     background-color: lightblue;
 }
 
-tr.t{
+tbody.T{
     background-color: lightcoral;
     color: white;
 }
 
-tr.n{
+tbody.N{
     background-color: lightgreen;
 }
 

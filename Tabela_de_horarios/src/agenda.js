@@ -12,6 +12,7 @@ class Agenda {
 
     this.#turmas.push(novaTurma);
     this.#renderizar_elementos();
+    Tabela.renderizar();
   }
 
   static remover_turma(novaTurma){
